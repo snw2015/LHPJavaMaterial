@@ -1,0 +1,19 @@
+= LHPJavaMaterial
+
+LHP Java 全栈开发课程课件补充材料。
+
+作者：Samjna <snw201510@gmail.com>
+
+== 功能
+1. 课程大纲页面，附带课件下载链接。
+2. 课程词汇表。
+
+== 框架
+基于 https://vuejs.org/index.html[Vue.js^] 框架以及 https://element.eleme.io/[Element^] 组件库进行开发。
+
+== 许可证
+https://github.com/snw2015/LHPJavaMaterial/blob/main/LICENSE[MIT 许可协议^]。许可证只针对本静态网站，不包含课件内容。
+
+== Changelog
+=== 1.0.0【2022/8/29】
+实现基本功能。__New__
