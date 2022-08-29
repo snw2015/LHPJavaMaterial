@@ -70,7 +70,16 @@ Vue.component('ljm-table', {
         <template slot-scope="scope">
           <span v-for="(word, i) in scope.row.jp">
             <el-divider direction="vertical" v-if="i != 0"></el-divider>
-            {{ word[0] }}
+            <el-tooltip
+              v-if="word[0] !== word[1]"
+              effect="light"
+              :content="word[1]"
+              :visible-arrow="false"
+              :close-delay="0"
+              placement="top">
+              <span>{{ word[0] }}</span>
+            </el-tooltip>
+            <span v-else>{{ word[0] }}</span>
           </span>
         </template>
       </el-table-column>
@@ -105,7 +114,7 @@ Vue.component('ljm-table', {
             target="_blank">
             {{ scope.row.section }}<i class="el-icon-reading el-icon--right"></i>
           </el-link>
-          <span v-if="scope.row.section === '§z'">-</span>
+          <span v-else>-</span>
         </template>
       </el-table-column>
       <el-table-column
