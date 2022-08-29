@@ -1,0 +1,82 @@
+{
+  "tags": ["Java", "后端", "前端", "综合"],
+  "glossary": [{
+    "jp": ["バグ"],
+    "en": ["Bug"],
+    "zh": ["程序错误", "错误"],
+    "section": [1, 1, 1],
+    "tag": "综合"
+  }, {
+    "jp": ["ガーベッジコレクション"],
+    "en": ["Garbage Collection", "GC"],
+    "zh": ["垃圾回收"],
+    "section": [1, 1, 1],
+    "tag": "Java"
+  }, {
+    "jp": ["コンパイル"],
+    "en": ["Compile"],
+    "zh": ["编译"],
+    "section": [1, 1, 1],
+    "tag": "综合"
+  }, {
+    "jp": ["環境変数"],
+    "en": ["Environment Variable"],
+    "zh": ["环境变量"],
+    "section": [1, 1, 2],
+    "tag": "综合"
+  }, {
+    "jp": ["インデント", ["字下げ", "ジサゲ"]],
+    "en": ["Indentation"],
+    "zh": ["缩进"],
+    "section": [1, 1, 3],
+    "tag": "综合"
+  }, {
+    "jp": ["メインメソッド"],
+    "en": ["Main Method"],
+    "zh": ["主方法"],
+    "section": [1, 1, 3],
+    "tag": "Java"
+  }, {
+    "jp": ["メインメソッド"],
+    "en": ["Main Method"],
+    "zh": ["主方法"],
+    "section": [1, 1, 3],
+    "tag": "Java"
+  }, {
+    "jp": ["コードブロック", "ブロック"],
+    "en": ["Block"],
+    "zh": ["代码块"],
+    "section": [1, 1, 3],
+    "tag": "Java"
+  }, {
+    "jp": ["コメント"],
+    "en": ["Comment"],
+    "zh": ["注释"],
+    "section": [1, 1, 3],
+    "tag": "综合"
+  }, {
+    "jp": ["コメントアウト"],
+    "en": ["Comment Out"],
+    "zh": ["注释掉"],
+    "section": null,
+    "tag": "综合"
+  }, {
+    "jp": ["アンコメント"],
+    "en": ["Uncomment"],
+    "zh": ["取消注释"],
+    "section": null,
+    "tag": "综合"
+  }, {
+    "jp": ["プログラミング作法", "コーディングスタイル"],
+    "en": ["Programming Style", "Coding Style"],
+    "zh": ["代码风格"],
+    "section": [1, 1, 3],
+    "tag": "综合"
+  }, {
+    "jp": ["統合開発環境"],
+    "en": ["Integrated Development Environment", "IDE"],
+    "zh": ["集成开发环境"],
+    "section": [1, 1, 4],
+    "tag": "综合"
+  }]
+}
