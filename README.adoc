@@ -34,4 +34,4 @@ https://github.com/snw2015/LHPJavaMaterial/blob/main/LICENSE[MIT 许可协议^]�
 * 修正 UI 文本。__Fix__
 
 === 1.2.2【2022/8/31】
-* 修正按日文、英文或中文排序后再取消排序时的显示错误。__New__
+* 修正按日文、英文或中文排序后再取消排序时的显示错误。__Fix__
