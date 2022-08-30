@@ -44,7 +44,10 @@ Vue.component('ljm-table', {
 
     sortTable({ column, prop, order }) {
       this.sortedBy = order ? prop : null;
-      if (!['jp', 'en', 'zh'].includes(prop)) return;
+      if (!['jp', 'en', 'zh'].includes(prop) || !order) {
+        this.tableData = this.rawData.glossary;
+        return;
+      }
       this.tableLoading = true;
 
       const tableData = [];
