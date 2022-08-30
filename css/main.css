@@ -82,3 +82,31 @@ body {
 .footer-text-right {
   float: right;
 }
+
+/* Backtop */
+.backtop {
+  position: fixed;
+  right: 100px;
+  bottom: 50px;
+  opacity: 0.5;
+  transition-duration: 0.5s, 0s;
+  transition-delay: 0s, 0s;
+  transition-property: opacity, visibility;
+}
+
+.backtop:hover {
+  opacity: 1;
+}
+
+/* Miscellaneous */
+.lang-en {
+  word-break: normal;
+}
+
+.hidden {
+  opacity: 0;
+  transition-duration: 0.5s, 0s;
+  transition-delay: 0s, 0.5s;
+  transition-property: opacity, visibility;
+  visibility: hidden;
+}

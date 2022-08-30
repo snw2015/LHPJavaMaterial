@@ -13,6 +13,14 @@ function isMobile() {
   return check;
 }
 
+Vue.directive('scroll', {
+  inserted(el, binding) {
+    window.addEventListener('scroll', e => {
+      binding.value(window.scrollY);
+    });
+  }
+})
+
 Vue.component('ljm-navbar', {
   props: ['current', 'title'],
   template: `
@@ -52,7 +60,7 @@ Vue.component('ljm-navbar', {
           </el-menu-item>
           <el-menu-item index="3">
             <el-link :underline="false" href="glossary.html" icon="el-icon-collection">
-              用语集
+              词汇表
             </el-link>
           </el-menu-item>
         </el-menu>
@@ -71,5 +79,38 @@ Vue.component('ljm-footer', {
          Last updated: 2022/8/27
       </span> -->
     </div>
+  `
+});
+
+Vue.component('ljm-backtop', {
+  props: ['offset'],
+  data() {
+    return {
+      isShow: false
+    }
+  },
+  methods: {
+    scrollBack() {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      });
+    },
+    checkView(y) {
+      if (y > this.offset) {
+        this.isShow = true;
+      } else {
+        this.isShow = false;
+      }
+    }
+  },
+  template: `
+    <el-button
+      icon="el-icon-arrow-up"
+      circle
+      :class="{backtop: true, hidden: !isShow}"
+      @click="scrollBack"
+      v-scroll="checkView"></el-button>
   `
 });

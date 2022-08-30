@@ -7,36 +7,21 @@ Vue.component('ljm-table', {
       tagColors: {},
       tagData: [],
       tableData: [],
-      tableLoading: true
+      tableLoading: true,
+      sortedBy: null
     };
   },
 
   methods: {
-    updateTable() {
-      const tableData = [];
-      for (const entry of this.rawData.glossary) {
-        const row = {};
-        row.jp = entry.jp;
-        row.en = entry.en;
-        row.zh = entry.zh;
-        if (entry.section) {
-          row.section = '§ ' + entry.section.join('.');
-          row.href = 'content.html#s-' + entry.section.join('-');
-        } else {
-          row.section = '§z';
-        }
-        row.tag = entry.tag;
-        tableData.push(row);
-      }
-      this.tableData = tableData;
-    },
-
     updateTag() {
       this.tagData = [];
       this.tagColors = {};
       let i = 0;
       for (const tag of this.rawData.tags) {
-        this.tagData.push({text: tag, value: tag});
+        this.tagData.push({
+          text: tag,
+          value: tag
+        });
         this.tagColors[tag] = COLORS[i++];
       }
     },
@@ -53,8 +38,44 @@ Vue.component('ljm-table', {
       this.rawData = data;
       if (this.rawData === null) return;
       this.updateTag();
-      this.updateTable();
+      this.tableData = this.rawData.glossary;
       this.tableLoading = false;
+    },
+
+    sortTable({ column, prop, order }) {
+      if (prop === 'section') return;
+      this.tableLoading = true;
+
+      const tableData = [];
+
+      for (const entry of this.rawData.glossary) {
+        for (const word of entry[prop]) {
+          const row = Object.assign({}, entry);
+          row[prop] = [word].concat(entry[prop].filter(w => w !== word));
+          tableData.push(row);
+        }
+      }
+
+      if (prop === 'zh' || prop === 'en') {
+        tableData.sort((a, b) => a[prop][0].localeCompare(b[prop][0]));
+      } else if (prop === 'jp') {
+        tableData.sort((a, b) => a.jp[0][1].localeCompare(b.jp[0][1]));
+      }
+
+      if (order === 'descending') tableData.reverse();
+
+      this.tableData = tableData;
+      this.sortedBy = prop;
+
+      this.tableLoading = false;
+    },
+
+    sectionCompare(rowA, rowB) {
+      const a = rowA.section, b = rowB.section;
+      if (a == b) return 0;
+      if (!a) return 1;
+      if (!b) return -1;
+      return a > b ? 1 : -1;
     }
   },
 
@@ -62,16 +83,20 @@ Vue.component('ljm-table', {
     <el-table
       v-loading="tableLoading"
       :data="tableData"
-      :default-sort="{prop: 'section'}">
+      :default-sort="{prop: 'section'}"
+      @sort-change="sortTable">
       <el-table-column
         prop="jp"
         label="日文"
-        sortable>
+        sortable="custom">
         <template slot-scope="scope">
           <span v-for="(word, i) in scope.row.jp">
             <el-divider direction="vertical" v-if="i != 0"></el-divider>
+            <span
+              v-if="sortedBy === 'jp' && i != 0"
+              style="color: #C0C4CC;">{{ word[0] }}</span>
             <el-tooltip
-              v-if="word[0] !== word[1]"
+              v-else-if="word[0] !== word[1]"
               effect="light"
               :content="word[1]"
               :visible-arrow="false"
@@ -86,33 +111,47 @@ Vue.component('ljm-table', {
       <el-table-column
         prop="en"
         label="英文"
-        sortable>
+        sortable="custom">
         <template slot-scope="scope">
           <span v-for="(word, i) in scope.row.en">
             <el-divider direction="vertical" v-if="i != 0"></el-divider>
-            {{ word }}
+            <span
+              v-if="sortedBy === 'en' && i != 0"
+              class="lang-en"
+              style="color: #C0C4CC;">{{ word }}</span>
+            <span
+              v-else
+              class="lang-en">{{ word }}</span>
           </span>
         </template>
       </el-table-column>
       <el-table-column
         prop="zh"
         label="中文"
-        sortable>
+        sortable="custom">
         <template slot-scope="scope">
           <span v-for="(word, i) in scope.row.zh">
             <el-divider direction="vertical" v-if="i != 0"></el-divider>
-            {{ word }}
+            <span
+              v-if="sortedBy === 'zh' && i != 0"
+              style="color: #C0C4CC;">{{ word }}</span>
+            <span v-else >{{ word }}</span>
           </span>
         </template>
       </el-table-column>
       <el-table-column
         prop="section"
         label="出现章节"
-        sortable>
+        sortable
+        :sort-method="sectionCompare"
+        width="120">
         <template slot-scope="scope">
-          <el-link v-if="scope.row.section !== '§z'" :href="scope.row.href"
+          <el-link
+            v-if="scope.row.section"
+            :href="'content.html#s-' + scope.row.section.join('-')"
             target="_blank">
-            {{ scope.row.section }}<i class="el-icon-reading el-icon--right"></i>
+            {{ '§ ' + scope.row.section.join('.') }}
+            <i class="el-icon-reading el-icon--right"></i>
           </el-link>
           <span v-else>-</span>
         </template>
@@ -120,7 +159,8 @@ Vue.component('ljm-table', {
       <el-table-column
         label="类别"
         :filters="tagData"
-        :filter-method="filterTag">
+        :filter-method="filterTag"
+        width="100">
         <template slot-scope="scope">
           <el-tag
             :color="tagColors[scope.row.tag]"

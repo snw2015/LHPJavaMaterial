@@ -29,7 +29,6 @@ Vue.component('ljm-search', {
         this.dict.push(...entry.zh);
       });
       this.dict.sort();
-      console.log(this.dict);
     },
 
     querySearch(queryString, callback) {
