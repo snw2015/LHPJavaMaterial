@@ -43,7 +43,8 @@ Vue.component('ljm-table', {
     },
 
     sortTable({ column, prop, order }) {
-      if (prop === 'section') return;
+      this.sortedBy = order ? prop : null;
+      if (!['jp', 'en', 'zh'].includes(prop)) return;
       this.tableLoading = true;
 
       const tableData = [];
@@ -65,7 +66,6 @@ Vue.component('ljm-table', {
       if (order === 'descending') tableData.reverse();
 
       this.tableData = tableData;
-      this.sortedBy = prop;
 
       this.tableLoading = false;
     },
