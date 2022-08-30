@@ -16,4 +16,10 @@ https://github.com/snw2015/LHPJavaMaterial/blob/main/LICENSE[MIT 许可协议^]�
 
 == Changelog
 === 1.0.0【2022/8/29】
-实现基本功能。__New__
+- 实现基本功能。__New__
+
+=== 1.1.0【2022/8/29】
+- 导航栏响应式布局。__New__
+- 搜索框自动补全。__New__
+- 日文假名标注。__New__
+- 在移动端设备关闭惯性滚动。__Change__
