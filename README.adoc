@@ -28,6 +28,7 @@ https://github.com/snw2015/LHPJavaMaterial/blob/main/LICENSE[MIT 许可协议^]�
 * 添加“回到页首”按钮。__New__
 * 现在按日文、英文或中文排序时将拆分对应语言的同义词为多个词条。__New__
 * 现在日文将按假名发音排序。__Change__
+* 修正英语单词内换行问题。__Fix__
 
 === 1.2.1【2022/8/30】
 * 修正 UI 文本。__Fix__
