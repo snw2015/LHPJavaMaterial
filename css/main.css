@@ -94,6 +94,13 @@ body {
   transition-property: opacity, visibility;
 }
 
+@media (max-width: 800px) {
+  .backtop {
+    right: 20px;
+    bottom: 30px;
+  }
+}
+
 .backtop:hover {
   opacity: 1;
 }
@@ -109,4 +116,12 @@ body {
   transition-delay: 0s, 0.5s;
   transition-property: opacity, visibility;
   visibility: hidden;
+}
+
+/* Toc */
+.toc {
+  margin: 20px;
+  border: 1px solid #606266;
+  border-radius: 2px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 4px, rgba(0, 0, 0, 0.04) 0px 0px 6px;
 }

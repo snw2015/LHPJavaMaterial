@@ -6,7 +6,8 @@ Vue.component('ljm-content', {
     return {
       contentData: [],
       contentLoading: true,
-      currentKey: null
+      currentKey: null,
+      tocTargets: []
     };
   },
   mounted() {
@@ -20,11 +21,19 @@ Vue.component('ljm-content', {
     handle(data) {
       const contentData = [];
       let partNum = 1;
+      tocTargets = [];
       for (const part of data) {
         const partData = {
-          label: `第 ${partNum} 部分  ${part.title}`,
-          children: []
+          label: `第 ${partNum} 部分：${part.title}`,
+          children: [],
+          id: `c-part-${partNum}`
         };
+
+        tocTargets.push({
+          text: part.title,
+          id: partData.id
+        });
+
         let chapterNum = 1;
         for (const chapter of part.chapters) {
           const chapterData = {
@@ -51,7 +60,8 @@ Vue.component('ljm-content', {
         contentData.push(partData);
         partNum++;
       }
-      console.log(contentData);
+
+      this.tocTargets = tocTargets;
       return contentData;
     },
 
@@ -61,9 +71,13 @@ Vue.component('ljm-content', {
         this.currentKey = id;
         const i = setInterval(function() {
           const el = $('#' + id);
-          if (el) {
+          if (el.offset()) {
             setTimeout(function() {
-              window.scrollTo(0, el.offset().top - 200);
+              window.scrollTo({
+                top: el.offset().top - 200,
+                left: 0,
+                behavior: 'smooth'
+              });
             }, 400);
             clearInterval(i);
           }
@@ -74,6 +88,7 @@ Vue.component('ljm-content', {
   template: `
     <el-skeleton :loading="contentLoading" animated>
       <template>
+        <ljm-toc :targets="tocTargets" offset="100" ordered title="目录"></ljm-toc>
         <el-tree
           :data="contentData"
           :expand-on-click-node="false"

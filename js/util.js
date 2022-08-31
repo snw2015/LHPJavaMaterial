@@ -90,12 +90,13 @@ Vue.component('ljm-backtop', {
     }
   },
   methods: {
-    scrollBack() {
+    scrollBack(e) {
       window.scrollTo({
         top: 0,
         left: 0,
         behavior: 'smooth'
       });
+      e.target.blur();
     },
     checkView(y) {
       if (y > this.offset) {
