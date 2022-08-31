@@ -31,7 +31,7 @@ https://github.com/snw2015/LHPJavaMaterial/blob/main/LICENSE[MIT 许可协议^]�
 * 修正英语单词内换行问题。__Fix__
 
 === 1.2.1【2022/8/30】
-* 修正 UI 文本。__Fix__
+* 修正 UI 文本。__Minor__
 
 === 1.2.2【2022/8/31】
 * 修正按日文、英文或中文排序后再取消排序时的显示错误。__Fix__
@@ -42,4 +42,7 @@ https://github.com/snw2015/LHPJavaMaterial/blob/main/LICENSE[MIT 许可协议^]�
 === 1.3.0【2022/8/31】
 * 增加课件页面的导航目录。__New__
 * 添加了回到页首按钮的响应式布局。__Change__
-* 现在点击回到页首按钮后会丢失焦点。__Change__
+* 现在点击回到页首按钮后会丢失焦点。__Minor__
+
+=== 1.3.1【2022/8/31】
+* 增加指向官网的超链接。__Minor__

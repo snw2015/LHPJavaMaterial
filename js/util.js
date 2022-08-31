@@ -26,16 +26,16 @@ Vue.component('ljm-navbar', {
   template: `
     <div class="main-header">
       <div class="logo-wrapper">
-        <picture>
+        <a href="https://www.lighthouseplan.net/"><picture>
           <source
             media="(max-width: 600px)"
             srcset="https://www.lighthouseplan.net/favicon.ico"
-            width="30">
+            height="30">
           <img
             src="https://www.lighthouseplan.net/img/common/logo_light.png"
             alt="logo"
             width="150">
-        </picture>
+        </picture></a>
       </div>
 
       <div class="title-wrapper">
