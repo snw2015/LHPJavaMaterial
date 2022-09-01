@@ -46,3 +46,6 @@ https://github.com/snw2015/LHPJavaMaterial/blob/main/LICENSE[MIT 许可协议^]�
 
 === 1.3.1【2022/8/31】
 * 增加指向官网的超链接。__Minor__
+
+=== 1.3.2【2022/9/1】
+* 再次修改导航栏的响应式布局。__Change__

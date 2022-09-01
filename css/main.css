@@ -22,12 +22,6 @@ body {
   padding: 15px 0;
 }
 
-/* @media screen and (max-width: 734px) {
-  .logo-wrapper {
-    display: none;
-  }
-} */
-
 .title-wrapper {
   float: left;
   margin-left: 5%;
@@ -53,6 +47,12 @@ body {
 
 .header-nav-wrapper .el-link:hover {
   color: #D0D3DA !important;
+}
+
+@media (max-width: 340px) {
+  .nav-text {
+    display: none;
+  }
 }
 
 /* Content Body */

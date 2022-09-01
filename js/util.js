@@ -28,6 +28,11 @@ Vue.component('ljm-navbar', {
       <div class="logo-wrapper">
         <a href="https://www.lighthouseplan.net/"><picture>
           <source
+            media="(max-width: 380px)"
+            srcset="https://www.lighthouseplan.net/favicon.ico"
+            width="0"
+            height="0">
+          <source
             media="(max-width: 600px)"
             srcset="https://www.lighthouseplan.net/favicon.ico"
             height="30">
@@ -50,17 +55,17 @@ Vue.component('ljm-navbar', {
                   active-text-color="#FFFAFA">
           <el-menu-item index="1">
             <el-link :underline="false" href="index.html" icon="el-icon-s-home">
-              首页
+              <span class="nav-text">首页</span>
             </el-link>
           </el-menu-item>
           <el-menu-item index="2">
-            <el-link :underline="false" href="content.html" icon="el-icon-collection">
-              教材
+            <el-link :underline="false" href="content.html" icon="el-icon-reading">
+              <span class="nav-text">教材</span>
             </el-link>
           </el-menu-item>
           <el-menu-item index="3">
             <el-link :underline="false" href="glossary.html" icon="el-icon-collection">
-              词汇表
+              <span class="nav-text">词汇表</span>
             </el-link>
           </el-menu-item>
         </el-menu>
