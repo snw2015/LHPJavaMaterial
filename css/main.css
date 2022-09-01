@@ -88,7 +88,7 @@ body {
   position: fixed;
   right: 100px;
   bottom: 50px;
-  opacity: 0.5;
+  opacity: 0.7;
   transition-duration: 0.5s, 0s;
   transition-delay: 0s, 0s;
   transition-property: opacity, visibility;
