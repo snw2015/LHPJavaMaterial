@@ -1,12 +1,14 @@
 body {
   margin: auto;
   margin-top: 0;
+  margin-bottom: 0;
+  background-color: #FFFAFA;
 }
 
 /* ---------- Header ---------- */
 .main-header {
   background-color: #163867;
-  height: 61px;
+  height: 60px;
   width: 100%;
   color: #FFFAFA;
   padding: 0 20px;
@@ -55,8 +57,8 @@ body {
 
 /* Content Body */
 .main-body {
-  margin-top: 61px;
-  min-height: calc(100vh - 61px - 40px);
+  margin-top: 60px;
+  min-height: calc(100vh - 60px - 40px);
   width: 100%;
   box-sizing: border-box;
   padding: 10px 0;
