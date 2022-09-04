@@ -18,7 +18,6 @@ Vue.component('ljm-glossary', {
       this.$emit('value', this.input);
     },
     preproc(data) {
-      // TODO: some default things
       data.glossary = data.glossary.map(entry => {
         entry.jp = entry.jp.map(word =>
           typeof word === 'string' ? [word, word] : word

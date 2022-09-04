@@ -24,7 +24,7 @@ Vue.component('ljm-content', {
       tocTargets = [];
       for (const part of data) {
         const partData = {
-          label: `第 ${partNum} 部分：${part.title}`,
+          label: this.$t('toc.part-title', [partNum]) + part.title,
           children: [],
           id: `c-part-${partNum}`
         };
@@ -88,7 +88,7 @@ Vue.component('ljm-content', {
   template: `
     <el-skeleton :loading="contentLoading" animated>
       <template>
-        <ljm-toc :targets="tocTargets" offset="100" ordered title="目录"></ljm-toc>
+        <ljm-toc :targets="tocTargets" offset="100" ordered :title="$t('toc.title')"></ljm-toc>
         <el-tree
           :data="contentData"
           :expand-on-click-node="false"
@@ -100,11 +100,11 @@ Vue.component('ljm-content', {
             <span>{{ node.label }}</span>
             <span style="margin-left: 15px;">
               <el-link v-if="data.text" :href="data.text" icon="el-icon-reading"
-                target="_blank">课件</el-link>
+                target="_blank">{{$t('toc.textbook')}}</el-link>
               <el-link v-if="data.practice" :href="data.practice" icon="el-icon-edit"
-                target="_blank">练习</el-link>
+                target="_blank">{{$t('toc.practice')}}</el-link>
               <el-link v-if="data.material" :href="data.material" icon="el-icon-folder"
-                target="_blank">材料</el-link>
+                target="_blank">{{$t('toc.material')}}</el-link>
             </span>
           </span>
         </el-tree>

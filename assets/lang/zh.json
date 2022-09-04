@@ -1,0 +1,28 @@
+{
+  "nav": {
+    "homepage": "首页",
+    "contents": "教材",
+    "glossary": "词汇表"
+  },
+  "toc": {
+    "title": "目录",
+    "textbook": "课件",
+    "practice": "练习",
+    "material": "材料",
+    "part-title": "第 {0} 部分："
+  },
+  "glossary": {
+    "japanese": "日文",
+    "english": "英文",
+    "chinese": "中文",
+    "first-appear": "出现章节",
+    "category": "类别",
+    "search-text": "输入搜索内容，如“方法”：",
+    "tag": {
+      "java": "Java",
+      "misc": "综合",
+      "frontend": "前端",
+      "backend": "后端"
+    }
+  }
+}

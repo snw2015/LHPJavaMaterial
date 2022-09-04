@@ -1,0 +1,28 @@
+{
+  "nav": {
+    "homepage": "Home",
+    "contents": "Textbook",
+    "glossary": "Glossary"
+  },
+  "toc": {
+    "title": "Table Of Contents",
+    "textbook": "lecture",
+    "practice": "practice",
+    "material": "material",
+    "part-title": "Part {0}: "
+  },
+  "glossary": {
+    "japanese": "Japanese",
+    "english": "English",
+    "chinese": "Chinese",
+    "first-appear": "Appearance",
+    "category": "Category",
+    "search-text": "Type keywords to search:",
+    "tag": {
+      "java": "JAVA",
+      "misc": "MISC",
+      "frontend": "FRONTEND",
+      "backend": "BACKEND"
+    }
+  }
+}

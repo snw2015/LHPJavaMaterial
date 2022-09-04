@@ -1,0 +1,28 @@
+{
+  "nav": {
+    "homepage": "ホーム",
+    "contents": "資料",
+    "glossary": "用語集"
+  },
+  "toc": {
+    "title": "目次",
+    "textbook": "講義",
+    "practice": "演習問題",
+    "material": "添付資料",
+    "part-title": "第 {0} 部分："
+  },
+  "glossary": {
+    "japanese": "日本語",
+    "english": "英語",
+    "chinese": "中国語",
+    "first-appear": "出現位置",
+    "category": "カテゴリ",
+    "search-text": "検索内容を入力：",
+    "tag": {
+      "java": "Java",
+      "misc": "総合",
+      "frontend": "フロントエンド",
+      "backend": "バックエンド"
+    }
+  }
+}

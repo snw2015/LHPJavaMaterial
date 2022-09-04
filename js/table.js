@@ -19,7 +19,7 @@ Vue.component('ljm-table', {
       let i = 0;
       for (const tag of this.rawData.tags) {
         this.tagData.push({
-          text: tag,
+          text: this.$t('glossary.tag.' + tag),
           value: tag
         });
         this.tagColors[tag] = COLORS[i++];
@@ -90,7 +90,7 @@ Vue.component('ljm-table', {
       @sort-change="sortTable">
       <el-table-column
         prop="jp"
-        label="日文"
+        :label="$t('glossary.japanese')"
         sortable="custom">
         <template slot-scope="scope">
           <span v-for="(word, i) in scope.row.jp">
@@ -113,7 +113,7 @@ Vue.component('ljm-table', {
       </el-table-column>
       <el-table-column
         prop="en"
-        label="英文"
+        :label="$t('glossary.english')"
         sortable="custom">
         <template slot-scope="scope">
           <span v-for="(word, i) in scope.row.en">
@@ -130,7 +130,7 @@ Vue.component('ljm-table', {
       </el-table-column>
       <el-table-column
         prop="zh"
-        label="中文"
+        :label="$t('glossary.chinese')"
         sortable="custom">
         <template slot-scope="scope">
           <span v-for="(word, i) in scope.row.zh">
@@ -144,10 +144,10 @@ Vue.component('ljm-table', {
       </el-table-column>
       <el-table-column
         prop="section"
-        label="出现章节"
+        :label="$t('glossary.first-appear')"
         sortable
         :sort-method="sectionCompare"
-        width="120">
+        width="130">
         <template slot-scope="scope">
           <el-link
             v-if="scope.row.section"
@@ -160,15 +160,15 @@ Vue.component('ljm-table', {
         </template>
       </el-table-column>
       <el-table-column
-        label="类别"
+        :label="$t('glossary.category')"
         :filters="tagData"
         :filter-method="filterTag"
-        width="100">
+        width="140">
         <template slot-scope="scope">
           <el-tag
             :color="tagColors[scope.row.tag]"
             style="color: #606266;">
-            {{ scope.row.tag }}
+            {{ $t('glossary.tag.' + scope.row.tag) }}
           </el-tag>
         </template>
       </el-table-column>

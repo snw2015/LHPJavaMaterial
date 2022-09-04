@@ -17,6 +17,12 @@ body {
   z-index: 1;
 }
 
+@media (max-width: 800px) {
+  .title {
+    display: none;
+  }
+}
+
 .logo-wrapper {
   float: left;
   padding: 15px 0;
@@ -39,6 +45,11 @@ body {
   }
 }
 
+.main-header .el-menu-item {
+  height: 59.5px;
+}
+
+
 .header-nav-wrapper {
   float: right;
   line-height: 60px;
@@ -47,12 +58,6 @@ body {
 
 .header-nav-wrapper .el-link:hover {
   color: #D0D3DA !important;
-}
-
-@media (max-width: 340px) {
-  .nav-text {
-    display: none;
-  }
 }
 
 /* Content Body */
@@ -85,12 +90,21 @@ body {
   float: right;
 }
 
+.lang-picker {
+  color: inherit;
+}
+
+.lang-picker i {
+  vertical-align: middle;
+  cursor: pointer;
+}
+
 /* Backtop */
 .backtop {
   position: fixed;
   right: 100px;
   bottom: 50px;
-  opacity: 0.7;
+  opacity: 0.5;
   transition-duration: 0.5s, 0s;
   transition-delay: 0s, 0s;
   transition-property: opacity, visibility;

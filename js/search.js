@@ -41,7 +41,7 @@ Vue.component('ljm-search', {
   },
   template: `
     <el-autocomplete
-      placeholder="输入搜索内容：如“方法”"
+      :placeholder="$t('glossary.search-text')"
       prefix-icon="el-icon-search"
       v-model="input"
       :fetch-suggestions="querySearch"
