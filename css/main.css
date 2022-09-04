@@ -46,7 +46,7 @@ body {
 }
 
 .main-header .el-menu-item {
-  height: 59.5px;
+  height: 60px;
 }
 
 
@@ -58,6 +58,12 @@ body {
 
 .header-nav-wrapper .el-link:hover {
   color: #D0D3DA !important;
+}
+
+@media (max-width:350px) {
+  .nav-text {
+    display: none;
+  }
 }
 
 /* Content Body */
@@ -84,6 +90,24 @@ body {
 
 .footer-text-left {
   float: left;
+}
+
+@media (max-width: 440px) {
+  .footer-text-left {
+    font-size: 0.8em;
+  }
+}
+
+@media (max-width: 350px) {
+  .footer-text-left {
+    font-size: 0.5em;
+  }
+}
+
+@media (max-width: 335px) {
+  .footer-text-left {
+    display: none;
+  }
 }
 
 .footer-text-right {
