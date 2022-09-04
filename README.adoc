@@ -59,3 +59,6 @@ https://github.com/snw2015/LHPJavaMaterial/blob/main/LICENSE[MIT 许可协议^]�
 === 1.4.1【2022/9/4】
 * 修正了语言图标的在移动端的显示问题。__Fix__
 * 暂时回调导航栏高度，之后再作进一步修正。__Minor__
+
+=== 1.4.2【2022/9/4】
+* 修正了英文版导航栏的显示问题。__Fix__

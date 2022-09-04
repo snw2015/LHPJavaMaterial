@@ -57,7 +57,7 @@ Vue.component('ljm-navbar', {
       <div class="logo-wrapper">
         <a href="https://www.lighthouseplan.net/"><picture>
           <source
-            media="(max-width: 380px)"
+            media="(max-width: 420px)"
             srcset="https://www.lighthouseplan.net/favicon.ico"
             width="0"
             height="0">

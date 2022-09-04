@@ -60,7 +60,7 @@ body {
   color: #D0D3DA !important;
 }
 
-@media (max-width:350px) {
+@media (max-width:390px) {
   .nav-text {
     display: none;
   }
