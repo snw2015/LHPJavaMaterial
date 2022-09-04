@@ -24,5 +24,8 @@
       "frontend": "フロントエンド",
       "backend": "バックエンド"
     }
+  },
+  "source": {
+    "contents-path": "assets/data/contents-ja/"
   }
 }

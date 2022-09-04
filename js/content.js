@@ -1,6 +1,3 @@
-LJM_CONTENT_PATH = 'assets/data/contents/';
-LJM_CONTENT_JSON_PATH = 'assets/data/content.json';
-
 Vue.component('ljm-content', {
   data() {
     return {
@@ -11,7 +8,7 @@ Vue.component('ljm-content', {
     };
   },
   mounted() {
-    getJSON(LJM_CONTENT_JSON_PATH).then(data => {
+    getJSON(this.$t('source.contents-path') + 'info.json').then(data => {
       this.contentData = this.handle(data);
       this.contentLoading = false;
       this.tryScroll();
@@ -39,15 +36,15 @@ Vue.component('ljm-content', {
           const chapterData = {
             label: `${partNum}.${chapterNum} ${chapter.title}`,
             children: [],
-            text: LJM_CONTENT_PATH + `${partNum}/${chapterNum}/class.pdf`,
-            practice: !chapter.practice ? null : LJM_CONTENT_PATH + `${partNum}/${chapterNum}/problems.pdf`,
-            material: !chapter.material ? null : LJM_CONTENT_PATH + `download/${partNum}.${chapterNum}.zip`
+            text: this.$t('source.contents-path') + `${partNum}/${chapterNum}/class.pdf`,
+            practice: !chapter.practice ? null : this.$t('source.contents-path') + `${partNum}/${chapterNum}/problems.pdf`,
+            material: !chapter.material ? null : this.$t('source.contents-path') + `download/${partNum}.${chapterNum}.zip`
           };
           let sectionNum = 1;
           for (const section of chapter.sections) {
             const sectionData = {
               label: `${partNum}.${chapterNum}.${sectionNum} ${section.title}`,
-              text: LJM_CONTENT_PATH +
+              text: this.$t('source.contents-path') +
                 `${partNum}/${chapterNum}/class.pdf#page=${section.page}`,
               id: `s-${partNum}-${chapterNum}-${sectionNum}`
             };

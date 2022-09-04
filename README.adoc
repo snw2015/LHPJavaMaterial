@@ -62,3 +62,6 @@ https://github.com/snw2015/LHPJavaMaterial/blob/main/LICENSE[MIT 许可协议^]�
 
 === 1.4.2【2022/9/4】
 * 修正了英文版导航栏的显示问题。__Fix__
+
+=== 1.4.3【2022/9/5】
+* 增加了日文课件的对应并调整了相关文件路径。__Change__

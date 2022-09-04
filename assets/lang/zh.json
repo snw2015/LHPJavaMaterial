@@ -24,5 +24,8 @@
       "frontend": "前端",
       "backend": "后端"
     }
+  },
+  "source": {
+    "contents-path": "assets/data/contents-zh/"
   }
 }
