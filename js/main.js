@@ -9,7 +9,12 @@ getJSON(LOCALE_INFO_PATH).then((locales) => {
       messages[locales[i]] = results[i];
     }
     const i18n = new VueI18n({ locale: getLocale(), messages });
-    var app = new Vue({ i18n }).$mount('#app');
+    const app = new Vue({
+      i18n,
+      data: {
+        tocTargets: null
+      }
+    }).$mount('#app');
 
     if (!isMobile()) {
       luxy.init({ wrapperSpeed: 0.12 });

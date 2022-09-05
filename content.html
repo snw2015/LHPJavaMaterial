@@ -17,7 +17,7 @@
   <script src="https://unpkg.com/element-ui@2.15.9/lib/index.js"></script>
 
   <!-- Luxy -->
-  <script src="js/luxy.min.js" charset="utf-8"></script>
+  <script src="js/luxy.js" charset="utf-8"></script>
 
   <!-- Icons -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
@@ -26,6 +26,7 @@
   <link rel="stylesheet" href="css/main.css">
 
   <script src="js/util.js" charset="utf-8" defer></script>
+  <script src="js/aside.js" charset="utf-8" defer></script>
   <script src="js/toc.js" charset="utf-8" defer></script>
   <script src="js/content.js" charset="utf-8" defer></script>
   <script src="js/main.js" charset="utf-8" defer></script>
@@ -36,9 +37,10 @@
     <ljm-navbar current="2" :title="'Java - ' + $t('nav.contents')"></ljm-navbar>
     <div id="luxy">
       <div class="main-body">
-        <ljm-content></ljm-content>
+        <ljm-content v-model="tocTargets"></ljm-content>
       </div>
       <ljm-footer></ljm-footer>
+      <ljm-aside class="luxy-el"><ljm-toc :targets="tocTargets" offset="100" ordered :title="$t('toc.title')"></ljm-toc></ljm-aside>
     </div>
     <ljm-backtop offset="300"></ljm-backtop>
   </div>

@@ -1,10 +1,10 @@
 Vue.component('ljm-content', {
+  props: ['value'],
   data() {
     return {
       contentData: [],
       contentLoading: true,
-      currentKey: null,
-      tocTargets: []
+      currentKey: null
     };
   },
   mounted() {
@@ -58,7 +58,8 @@ Vue.component('ljm-content', {
         partNum++;
       }
 
-      this.tocTargets = tocTargets;
+      this.$emit('input', tocTargets);
+
       return contentData;
     },
 
@@ -85,7 +86,6 @@ Vue.component('ljm-content', {
   template: `
     <el-skeleton :loading="contentLoading" animated>
       <template>
-        <ljm-toc :targets="tocTargets" offset="100" ordered :title="$t('toc.title')"></ljm-toc>
         <el-tree
           :data="contentData"
           :expand-on-click-node="false"

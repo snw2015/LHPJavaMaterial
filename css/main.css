@@ -2,7 +2,7 @@ body {
   margin: auto;
   margin-top: 0;
   margin-bottom: 0;
-  background-color: #FFFAFA;
+  background-color: #FFFFFF;
 }
 
 /* ---------- Header ---------- */
@@ -14,7 +14,7 @@ body {
   padding: 0 20px;
   position: fixed;
   top: 0;
-  z-index: 1;
+  z-index: 2;
 }
 
 @media (max-width: 800px) {
@@ -69,6 +69,7 @@ body {
 /* Content Body */
 .main-body {
   margin-top: 60px;
+  margin-bottom: 40px;
   min-height: calc(100vh - 60px - 40px);
   width: 100%;
   box-sizing: border-box;
@@ -77,9 +78,13 @@ body {
 
 /* Footer */
 .main-footer {
+  width: 100%;
   height: 40px;
   background-color: #163867;
   color: #FFFAFA;
+  z-index: 2;
+  position: fixed;
+  bottom: 0;
 }
 
 .footer-text {
@@ -123,21 +128,75 @@ body {
   cursor: pointer;
 }
 
+/* Aside */
+.aside-wrapper {
+  height: 100%;
+  position: fixed;
+  width: 300px;
+  z-index: 1;
+  top: 60px;
+  right: -1px;
+  transition: right;
+  transition-duration: 0.5s;
+}
+
+.aside {
+  height: 100%;
+  position: absolute;
+  box-sizing: border-box;
+  width: 300px;
+  z-index: 1;
+  right: 0;
+  border: 1px solid #606266;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
+  background-color: #FFFFFF;
+  padding: 0 15px;
+}
+
+.aside-off {
+  right: -301px;
+  transition: right;
+  transition-duration: 0.5s;
+}
+
+.aside-button {
+  position: absolute;
+  opacity: 0.65;
+  width: 50px;
+  height: 50px;
+  top: 50vh;
+  right: 300px;
+  transform: translate(50%, calc(-30px - 50%));
+}
+
+.aside-button > span {
+  font-size: 20px;
+  margin-left: -19px;
+  pointer-events: none;
+}
+
+@media (max-width: 800px) {
+  .aside, .aside-button {
+    display: none;
+  }
+}
+
 /* Backtop */
 .backtop {
   position: fixed;
   right: 100px;
   bottom: 50px;
-  opacity: 0.5;
+  opacity: 0.65;
   transition-duration: 0.5s, 0s;
   transition-delay: 0s, 0s;
   transition-property: opacity, visibility;
+  z-index: 3;
 }
 
 @media (max-width: 800px) {
   .backtop {
     right: 20px;
-    bottom: 30px;
+    bottom: 50px;
   }
 }
 
@@ -158,10 +217,6 @@ body {
   visibility: hidden;
 }
 
-/* Toc */
-.toc {
-  margin: 20px;
-  border: 1px solid #606266;
-  border-radius: 2px;
-  box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 4px, rgba(0, 0, 0, 0.04) 0px 0px 6px;
+#luxy {
+  position: relative;
 }
