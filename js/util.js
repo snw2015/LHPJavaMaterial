@@ -52,6 +52,9 @@ Vue.directive('scroll', {
 
 Vue.component('ljm-navbar', {
   props: ['current', 'title'],
+  mounted() {
+    document.title = 'LighthouseIT ' + this.title;
+  },
   template: `
     <div class="main-header">
       <div class="logo-wrapper">
