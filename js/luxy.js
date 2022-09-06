@@ -113,7 +113,9 @@
 						speedX : targets[i].getAttribute('data-speed-x'),
 						speedY : targets[i].getAttribute('data-speed-Y'),
 						percentage : targets[i].getAttribute('data-percentage'),
-						horizontal : targets[i].getAttribute('data-horizontal')
+						horizontal : targets[i].getAttribute('data-horizontal'),
+						sticky : targets[i].hasAttribute('sticky'),
+						stickyOffset : targets[i].getAttribute('sticky-offset')
 					};
 					this.targetsInit(targets[i],attr);
 				}
@@ -122,7 +124,7 @@
 				this.wrapper.style.width = '100%';
 				this.wrapper.style.position = 'fixed';
 			},
-			targetsInit: function(elm,attr){
+			targetsInit: function(elm, attr){
 				this.Targets.push({
 					elm : elm,
 					offset : attr.offset ? attr.offset : 0,
@@ -131,10 +133,13 @@
 					left : 0,
 					speedX : attr.speedX ? attr.speedX : 1,
 					speedY : attr.speedY ? attr.speedY : 1,
-					percentage :attr.percentage ? attr.percentage : 0
+					percentage : attr.percentage ? attr.percentage : 0,
+          stickyOffset : attr.stickyOffset ? attr.stickyOffset : 0,
+          stickyDefault: this.getOffsetTopToWrapper(elm),
+          sticky: attr.sticky
 				});
 			},
-			scroll : function(){
+			scroll : function() {
 				var scrollTopTmp = document.documentElement.scrollTop || document.body.scrollTop;
 				this.scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
 				var offsetBottom = this.scrollTop + this.windowHeight;
@@ -143,15 +148,15 @@
 					this.targetsUpdate(this.Targets[i]);
 				}
 			},
-			animate : function(){
+			animate : function() {
 				this.scroll();
 				this.scrollId = requestAnimationFrame(this.animate.bind(this));
 			},
-			wrapperUpdate : function(){
+			wrapperUpdate : function() {
 				this.wapperOffset += (this.scrollTop - this.wapperOffset) * this.settings.wrapperSpeed;
 				this.wrapper.style.transform = 'translate3d(' + 0 + ',' +  Math.round(-this.wapperOffset* 100) / 100 + 'px ,' + 0 + ')';
 			},
-			targetsUpdate : function(target){
+			targetsUpdate : function(target) {
 				// target.top += (this.scrollTop * Number(this.settings.targetSpeed) * Number(target.speedY) - target.top) * this.settings.targetPercentage;
 				// target.left += (this.scrollTop * Number(this.settings.targetSpeed) * Number(target.speedX) - target.left) * this.settings.targetPercentage;
 				// var targetOffsetTop = ( parseInt(target.percentage) - target.top - parseInt(target.offset) );
@@ -162,7 +167,12 @@
 				// 	offsetX = Math.round(targetOffsetLeft * -100) / 100;
 				// }
 				// target.elm.style.transform = 'translate3d(' + offsetX + 'px ,' + offsetY + 'px ,' + 0 +')';
-				target.elm.style.transform = 'translate3d(' + 0 + 'px ,' + (-Math.round(-this.wapperOffset* 100) / 100) + 'px ,' + 0 +')';
+
+        if (target.sticky) {
+          target.elm.style.transform = 'translate3d(' + 0 + 'px ,' + Math.max(0, (-Math.round(-this.wapperOffset* 100) / 100) - target.stickyOffset - target.stickyDefault) + 'px ,' + 0 +')';
+        } else {
+				  target.elm.style.transform = 'translate3d(' + 0 + 'px ,' + (-Math.round(-this.wapperOffset* 100) / 100) + 'px ,' + 0 +')';
+        }
 			},
 			resize: function(){
 				var self = this;
@@ -203,6 +213,17 @@
 				this.scrollId = "";
 				this.resizeId = "";
 			},
+      getOffsetTopToWindow(elm) {
+        let offset = 0;
+        while (elm) {
+          offset += elm.offsetTop;
+          elm = elm.offsetParent;
+        }
+        return offset;
+      },
+      getOffsetTopToWrapper(elm) {
+        return this.getOffsetTopToWindow(elm) - this.getOffsetTopToWindow(this.wrapper);
+      }
 		};
 
 

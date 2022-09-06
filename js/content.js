@@ -21,7 +21,7 @@ Vue.component('ljm-content', {
       tocTargets = [];
       for (const part of data) {
         const partData = {
-          label: this.$t('toc.part-title', [partNum]) + part.title,
+          label: this.$t('toc.part-title', [partNum]) + " - " + part.title,
           children: [],
           id: `c-part-${partNum}`
         };

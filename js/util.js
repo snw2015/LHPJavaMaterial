@@ -38,6 +38,37 @@ function setLocale(locale) {
   }
 }
 
+function arrCompare(a, b) {
+  if (!b) return 1;
+  if (!a) return -1;
+  for (let i = 0; i < a.length; i++) {
+    if (a[i] > b[i]) return 1;
+    if (a[i] < b[i]) return -1;
+  }
+  return 0;
+}
+
+function initialJp(word) {
+  c = word[0];
+  if (c < 'ァ' || c > 'ヺ') return [0, '*'];
+  if (c <= 'オ') return [1, 'あ'];
+  if (c <= 'ゴ') return [2, 'か'];
+  if (c <= 'ゾ') return [3, 'さ'];
+  if (c <= 'ド') return [4, 'た'];
+  if (c <= 'ノ') return [5, 'な'];
+  if (c <= 'ポ') return [6, 'は'];
+  if (c <= 'モ') return [7, 'ま'];
+  if (c <= 'ヨ') return [8, 'や'];
+  if (c <= 'ロ') return [9, 'ら'];
+  return [10, 'わ'];
+}
+
+function initialEn(word) {
+  c = word[0].toUpperCase();
+  if (c < 'A' || c > 'Z') return [0, '*'];
+  return [c.charCodeAt(0) - 'A'.charCodeAt(0) + 1, c];
+}
+
 // if (isMobile()) {
 //   $("#app").addClass("mobile");
 // }
@@ -182,7 +213,7 @@ Vue.component('ljm-backtop', {
     <el-button
       icon="el-icon-arrow-up"
       circle
-      :class="{backtop: true, hidden: !isShow}"
+      :class="{backtop: true, 'show-opacity': isShow, 'hidden-opacity': !isShow}"
       @click="scrollBack"
       v-scroll="checkView"></el-button>
   `

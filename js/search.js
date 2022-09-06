@@ -22,18 +22,19 @@ Vue.component('ljm-search', {
 
     setData(data) {
       this.data = data;
-      this.dict = [];
+      this.dict = new Set();
       this.data.forEach(entry => {
-        entry.jp.forEach(word => this.dict.push(word[0]));
-        this.dict.push(...entry.en);
-        this.dict.push(...entry.zh);
+        entry.jp.forEach(word => this.dict.add(word[0]));
+        entry.en.forEach(this.dict.add, this.dict);
+        entry.zh.forEach(this.dict.add, this.dict);
       });
+      this.dict = [...this.dict];
       this.dict.sort();
     },
 
     querySearch(queryString, callback) {
       callback(this.dict.filter(word =>
-        word.startsWith(queryString)
+        word.toLowerCase().startsWith(queryString.toLowerCase())
       ).map(word => {
          return {value: word};
       }));
@@ -47,7 +48,8 @@ Vue.component('ljm-search', {
       :fetch-suggestions="querySearch"
       :trigger-on-focus="false"
       @change="change()"
-      style="margin-left: 10px; width: 250px;">
+      clearable
+      class="search-box">
     </el-autocomplete>
   `
 });

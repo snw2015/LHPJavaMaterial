@@ -3,7 +3,9 @@ LJM_GLOSSARY_JSON_PATH = 'assets/data/glossary.json';
 Vue.component('ljm-glossary', {
   data() {
     return {
-      tableData: null
+      tableData: null,
+      showToc: false,
+      tocTargets: []
     };
   },
   mounted() {
@@ -31,6 +33,14 @@ Vue.component('ljm-glossary', {
         tags: this.tableData.tags,
         glossary: data
       })
+    },
+    setTargets(targets) {
+      if (targets && targets.length > 0) {
+        this.tocTargets = targets;
+        this.showToc = true;
+      } else {
+        this.showToc = false;
+      }
     }
   },
   template: `
@@ -39,7 +49,17 @@ Vue.component('ljm-glossary', {
         ref="search"
         @startCalculate="$refs.table.startLoad();"
         @calculated="updateTable"></ljm-search>
-      <ljm-table ref="table""></ljm-table>
+      <ljm-toc
+        :class="{'show-height': showToc, 'luxy-el': true, 'hidden-height': !showToc}"
+        :targets="tocTargets"
+        offset="170"
+        sticky
+        sticky-offset="-60"
+        divider
+        style="z-index:1; position: relative"></ljm-toc>
+      <ljm-table
+        ref="table"
+        @targetChanged="setTargets"></ljm-table>
     </div>
   `
 });

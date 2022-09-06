@@ -147,7 +147,7 @@ body {
   width: 300px;
   z-index: 1;
   right: 0;
-  border: 1px solid #606266;
+  border: 1px solid #DCDFE6;
   box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
   background-color: #FFFFFF;
   padding: 0 15px;
@@ -187,9 +187,6 @@ body {
   right: 100px;
   bottom: 50px;
   opacity: 0.65;
-  transition-duration: 0.5s, 0s;
-  transition-delay: 0s, 0s;
-  transition-property: opacity, visibility;
   z-index: 3;
 }
 
@@ -209,12 +206,32 @@ body {
   word-break: normal;
 }
 
-.hidden {
-  opacity: 0;
+.hidden-opacity {
+  opacity: 0 !important;
+  visibility: hidden !important;
   transition-duration: 0.5s, 0s;
   transition-delay: 0s, 0.5s;
   transition-property: opacity, visibility;
-  visibility: hidden;
+}
+
+.show-opacity {
+  transition-duration: 0.5s, 0s;
+  transition-delay: 0s, 0s;
+  transition-property: opacity, visibility;
+}
+
+.hidden-height {
+  height: 0 !important;
+  visibility: hidden !important;
+  transition-duration: 0.5s, 0s;
+  transition-delay: 0s, 0.5s;
+  transition-property: height, visibility;
+}
+
+.show-height {
+  transition-duration: 0.5s, 0s;
+  transition-delay: 0s, 0s;
+  transition-property: height, visibility;
 }
 
 #luxy {
