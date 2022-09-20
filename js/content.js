@@ -38,7 +38,8 @@ Vue.component('ljm-content', {
             children: [],
             text: this.$t('source.contents-path') + `${partNum}/${chapterNum}/class.pdf`,
             practice: !chapter.practice ? null : this.$t('source.contents-path') + `${partNum}/${chapterNum}/problems.pdf`,
-            material: !chapter.material ? null : this.$t('source.contents-path') + `download/${partNum}.${chapterNum}.zip`
+            material: !chapter.material ? null : this.$t('source.contents-path') + `${partNum}/${chapterNum}/resource.zip`,
+            name: `${partNum}.${chapterNum}`
           };
           let sectionNum = 1;
           for (const section of chapter.sections) {
@@ -100,7 +101,8 @@ Vue.component('ljm-content', {
                 target="_blank">{{$t('toc.textbook')}}</el-link>
               <el-link v-if="data.practice" :href="data.practice" icon="el-icon-edit"
                 target="_blank">{{$t('toc.practice')}}</el-link>
-              <el-link v-if="data.material" :href="data.material" icon="el-icon-folder"
+              <el-link v-if="data.material" :href="data.material"
+                :download="data.name + '.zip'" icon="el-icon-folder"
                 target="_blank">{{$t('toc.material')}}</el-link>
             </span>
           </span>

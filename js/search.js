@@ -25,7 +25,7 @@ Vue.component('ljm-search', {
       this.dict = new Set();
       this.data.forEach(entry => {
         entry.jp.forEach(word => this.dict.add(word[0]));
-        entry.en.forEach(this.dict.add, this.dict);
+        entry.en.forEach(phrase => phrase.split(' ').forEach(this.dict.add, this.dict));
         entry.zh.forEach(this.dict.add, this.dict);
       });
       this.dict = [...this.dict];
