@@ -679,7 +679,7 @@
   }, {
     "jp": ["コンパイルエラー"],
     "en": ["Runtime Error"],
-    "zh": ["实行时错误"],
+    "zh": ["编译错误"],
     "section": null,
     "tag": "java"
   }, {
